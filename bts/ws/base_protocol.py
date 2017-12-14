@@ -56,6 +56,7 @@ class BaseProtocol(object):
         self.request_id += 1
         request = {"id": request_id, "method": "call", "params": params}
         future = self.result[request_id] = asyncio.Future()
+        print(json.dumps(request))
         await self.websocket.send(json.dumps(request).encode('utf8'))
         await asyncio.wait_for(future, None)
         self.result.pop(request_id)
