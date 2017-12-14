@@ -84,7 +84,7 @@ class BaseProtocol(object):
         self.history_api = await self.rpc([1, "history", []])
         self.network_api = await self.rpc([1, "network_broadcast", []])
         await self.rpc(
-            [self.database_api, "set_subscribe_callback", [200, False]])
+            [self.database_api, "set_subscribe_callback", [200, True]])
 
     async def handler(self):
         # can handle message less than 8M
